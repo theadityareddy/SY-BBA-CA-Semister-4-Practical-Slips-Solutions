@@ -1,0 +1,14 @@
+
+  -----------------------------------------
+  |            RAILWAY E-TICKET            |
+  -----------------------------------------
+  | From: New York                |
+  | To: Los Angeles                    |
+  | Date: June 01, 2023            |
+  | Departure Time: 10:00 AM         |
+  | Arrival Time: 5:00 PM             |
+  | Train Name: California Zephyr           |
+  | Seat Number: A32             |
+  | Passenger Name: John Doe      |
+  | Price: $99.99             |
+  -----------------------------------------
