@@ -2,7 +2,8 @@
 #include <fstream>
 #include <cstring>
 
-class MyFile {
+class MyFile
+{
 private:
     std::string filename;
     std::fstream file;
@@ -10,25 +11,31 @@ private:
 public:
     MyFile(std::string filename) : filename(filename) {}
 
-    bool open() {
+    bool open()
+    {
         file.open(filename.c_str(), std::ios::in | std::ios::out);
         return file.is_open();
     }
 
-    void close() {
+    void close()
+    {
         file.close();
     }
 
-    void display() {
+    void display()
+    {
         std::string line;
-        while (getline(file, line)) {
+        while (getline(file, line))
+        {
             std::cout << line << std::endl;
         }
     }
 
-    bool operator+(MyFile& other) {
+    bool operator+(MyFile &other)
+    {
         std::ofstream outfile("concatenated.txt");
-        if (!outfile) {
+        if (!outfile)
+        {
             return false;
         }
 
@@ -40,20 +47,28 @@ public:
         return true;
     }
 
-    bool operator!() {
+    bool operator!()
+    {
         std::ofstream outfile("modified.txt");
-        if (!outfile) {
+        if (!outfile)
+        {
             return false;
         }
 
         std::string line;
         bool upper = true;
-        while (getline(file, line)) {
-            for (int i = 0; i < line.length(); i++) {
-                if (isalpha(line[i])) {
-                    if (upper) {
+        while (getline(file, line))
+        {
+            for (int i = 0; i < line.length(); i++)
+            {
+                if (isalpha(line[i]))
+                {
+                    if (upper)
+                    {
                         line[i] = toupper(line[i]);
-                    } else {
+                    }
+                    else
+                    {
                         line[i] = tolower(line[i]);
                     }
                     upper = !upper;
@@ -66,29 +81,34 @@ public:
         return true;
     }
 };
-int main() {
+int main()
+{
     MyFile file1("file1.txt");
     MyFile file2("file2.txt");
 
-    if (!file1.open()) {
+    if (!file1.open())
+    {
         std::cout << "Failed to open file1.txt" << std::endl;
         return 1;
     }
 
-    if (!file2.open()) {
+    if (!file2.open())
+    {
         std::cout << "Failed to open file2.txt" << std::endl;
         return 1;
     }
 
     // Concatenate file1 and file2 into file3
     MyFile file3("file3.txt");
-    if (!(file1 + file2)) {
+    if (!(file1 + file2))
+    {
         std::cout << "Failed to concatenate files" << std::endl;
         return 1;
     }
 
     // Modify file3
-    if (!(!file3)) {
+    if (!(!file3))
+    {
         std::cout << "Failed to modify file" << std::endl;
         return 1;
     }
